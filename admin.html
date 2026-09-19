@@ -86,6 +86,7 @@
   };
   const validUrl = value => { try { const u = new URL(value); return u.protocol === 'https:' && u.hostname.length > 0; } catch { return false; } };
   const escapeText = value => String(value ?? '');
+  const normalizeLink = link => ({...link, linkKey: link.linkKey ?? link.link_key ?? '', label: link.label ?? link.display_label ?? link.linkKey ?? link.link_key ?? '', url: link.url ?? link.link_url ?? '', isActive: link.isActive ?? link.is_active ?? true, sortOrder: link.sortOrder ?? link.sort_order ?? 0});
   const findLink = key => links.find(link => link.linkKey === key);
   function selectLink(key) {
     const link = findLink(key) || links[0];
@@ -111,7 +112,7 @@
     select.replaceChildren(...links.map(link => { const option = document.createElement('option'); option.value = link.linkKey; option.textContent = link.label || link.linkKey; return option; }));
     if (links.length) selectLink(findLink(selected) ? selected : links[0].linkKey);
   }
-  async function load() { const data = await request('/api/admin/links'); links = Array.isArray(data.links) ? data.links : []; renderRows(); }
+  async function load() { const data = await request('/api/admin/links'); links = (Array.isArray(data.links) ? data.links : Array.isArray(data) ? data : []).map(normalizeLink).filter(link => link.linkKey); renderRows(); }
   async function showManager() { loginView.classList.add('hidden'); managerView.classList.remove('hidden'); try { await load(); } catch (error) { status($('manager-status'), error.message, true); } }
   $('selected-key').addEventListener('change', event => selectLink(event.target.value));
   $('save-selected').addEventListener('click', async () => {
