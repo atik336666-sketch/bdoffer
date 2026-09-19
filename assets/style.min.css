@@ -57,3 +57,6 @@
 /* Keep the hero container exactly aligned with the natural banner aspect ratio. */
 .generated-hero{height:auto!important;min-height:0!important;aspect-ratio:auto!important;overflow:hidden!important;display:block!important}
 .generated-hero-image{display:block!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important}
+
+/* The countdown script controls these hands so the visual watch matches the timer. */
+.watch-hand--hour,.watch-hand--minute{animation:none!important}
