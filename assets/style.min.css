@@ -78,3 +78,7 @@
 .watch-hand--minute{width:2px!important;height:34px!important;background:#fffbe0!important;box-shadow:0 0 4px rgba(255,246,180,.95)!important}
 .watch-pin{width:8px!important;height:8px!important;border-width:2px!important}
 @media(max-width:599px){.watch-hand--hour{height:20px!important}.watch-hand--minute{height:28px!important}}
+
+/* Countdown-only footer: keep the message wide and the timer aligned at the right. */
+.scarcity{justify-content:space-between}.countdown-value{margin-left:auto;min-width:58px;font-size:clamp(14px,2.4vw,18px)}
+@media(max-width:599px){.countdown-value{min-width:46px;font-size:12px}}
