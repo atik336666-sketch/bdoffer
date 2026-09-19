@@ -24,37 +24,7 @@
 
   <script>window.BDOFFER_PIXEL_ID='';</script>
 
-  <!-- ══════════════════════════════════════════
-       SECURITY: Disable inspect / copy / save
-  ══════════════════════════════════════════ -->
-  <style>
-    /* Disable text selection everywhere */
-    *{-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important}
-    /* Disable image drag */
-    img{-webkit-user-drag:none;user-drag:none;pointer-events:none}
-    /* Allow clicks on links/buttons only */
-    a,button{pointer-events:auto}
-  </style>
-  <script>
-  (function(){
-    // Block right-click context menu
-    document.addEventListener('contextmenu',function(e){e.preventDefault();return false},true);
-    // Block common keyboard shortcuts: F12, Ctrl+Shift+I/J/C/U/S, Ctrl+U/S, Ctrl+A
-    document.addEventListener('keydown',function(e){
-      if(e.keyCode===123){e.preventDefault();return false} // F12
-      if(e.ctrlKey&&e.shiftKey&&[73,74,67].indexOf(e.keyCode)>-1){e.preventDefault();return false} // Ctrl+Shift+I/J/C
-      if(e.ctrlKey&&[85,83,65].indexOf(e.keyCode)>-1){e.preventDefault();return false} // Ctrl+U/S/A
-      if(e.metaKey&&e.altKey&&73===e.keyCode){e.preventDefault();return false} // Mac: Cmd+Opt+I
-    },true);
-    // Block drag on the page
-    document.addEventListener('dragstart',function(e){e.preventDefault();return false},true);
-    // Detect DevTools open attempt (basic)
-    var devt=function(){};devt.toString=function(){
-      document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;font-family:sans-serif;font-size:20px;color:#333">⚠️ এই পেজটি দেখার অনুমতি নেই।</div>';
-    };
-    if(window.console){var i=0;setInterval(function(){if(i++%5===0)console.log('%c',devt)},1000);}
-  })();
-  </script>
+  <!-- Accessibility and browser inspection remain enabled. -->
 </head>
 <body>
 <main class="page-shell">
