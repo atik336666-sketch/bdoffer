@@ -113,8 +113,15 @@
   </section>
 
   <section class="scarcity" aria-label="অফারের সময়সীমা">
-    <span>সময় শেষ হওয়ার আগে আপনার অপারেটর বেছে নিন</span>
-    <strong id="countdown" aria-live="polite" aria-atomic="true">০৫:০০</strong>
+    <div class="scarcity-copy"><span>সময় শেষ হওয়ার আগে আপনার অপারেটর বেছে নিন</span></div>
+    <div class="countdown-watch" aria-hidden="true">
+      <div class="watch-crown"></div>
+      <div class="watch-face">
+        <span class="watch-mark watch-mark--12">12</span><span class="watch-mark watch-mark--3">3</span><span class="watch-mark watch-mark--6">6</span><span class="watch-mark watch-mark--9">9</span>
+        <span class="watch-hand watch-hand--hour"></span><span class="watch-hand watch-hand--minute"></span><span class="watch-pin"></span>
+        <strong id="countdown" role="timer" aria-live="polite" aria-atomic="true">০৫:০০</strong>
+      </div>
+    </div>
   </section>
 
   <footer>
