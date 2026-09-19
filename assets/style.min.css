@@ -12,3 +12,16 @@
 /* Mobile typography and site footer refinements. */
 .site-copyright{display:block;width:100%;margin:5px 0 0;text-align:center;color:#71808b;font-size:11px;line-height:1.4}.site-copyright strong{color:#3b5963;font-weight:850}
 @media(max-width:599px){.category-heading h3{font-size:17px!important}.category-heading p{font-size:11px!important}}
+/* Premium category icon and operator palette. */
+.category-heading{align-items:stretch}
+.category-heading>div:nth-child(2){display:flex;min-height:52px;flex-direction:column;justify-content:center}
+.category-icon{flex:0 0 52px;width:52px;height:52px;border:1px solid rgba(255,255,255,.86);border-radius:16px;color:#fff;font-size:25px;line-height:1;text-shadow:0 2px 0 rgba(0,0,0,.25),0 4px 8px rgba(0,0,0,.22);box-shadow:inset 2px 2px 0 rgba(255,255,255,.42),inset -3px -4px 0 rgba(0,0,0,.17),0 8px 16px rgba(25,67,82,.22);transform:translateY(-1px);position:relative}
+.category-icon::after{content:"";position:absolute;inset:5px 9px auto 8px;height:12px;border-radius:50%;background:linear-gradient(110deg,rgba(255,255,255,.6),transparent);opacity:.8;pointer-events:none}
+.internet-icon{background:linear-gradient(145deg,#3db8df 0%,#1577a7 48%,#103e67 100%)}
+.minute-icon{background:linear-gradient(145deg,#ffd477 0%,#e49631 48%,#914317 100%)}
+.brand-orb--bl{--brand:#d8673d;--brand-dark:#8f341f;background:linear-gradient(145deg,#fffaf4,#f8e5d8)}
+.brand-orb--gp{--brand:#2387b9;--brand-dark:#07577e;background:linear-gradient(145deg,#f5fcff,#d9edf4)}
+.brand-orb--robi{--brand:#cf4b57;--brand-dark:#8f2633;background:linear-gradient(145deg,#fff8f7,#f6dce0)}
+.brand-orb--airtel{--brand:#b64f7b;--brand-dark:#7c2850;background:linear-gradient(145deg,#fff7fb,#f0dce8)}
+.brand-orb{border-color:color-mix(in srgb,var(--brand) 50%,#fff);box-shadow:0 9px 18px color-mix(in srgb,var(--brand) 18%,transparent),inset 1px 1px 0 rgba(255,255,255,.9),inset -2px -3px 0 rgba(45,67,72,.06)}
+@media(max-width:599px){.category-heading>div:nth-child(2){min-height:48px}.category-icon{flex-basis:48px;width:48px;height:48px;font-size:23px}.category-heading h3{font-size:17px!important}.category-heading p{font-size:11px!important}}
