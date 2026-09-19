@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: read
-  issues: write
   pages: write
   id-token: write
 
@@ -33,23 +32,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  notify-failure:
-    name: Notify deployment failure
-    if: ${{ failure() }}
-    needs: deploy
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      contents: read
-    steps:
-      - name: Open failure issue
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPOSITORY: ${{ github.repository }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          gh issue create \
-            --repo "$REPOSITORY" \
-            --title "GitHub Pages deployment failed — run ${{ github.run_number }}" \
-            --body "The GitHub Pages deployment failed.\n\nWorkflow run: $RUN_URL\nCommit: ${{ github.sha }}\nBranch: ${{ github.ref_name }}\n\nPlease inspect the failed workflow logs and close this issue after the deployment is fixed."
