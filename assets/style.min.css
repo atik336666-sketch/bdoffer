@@ -8,3 +8,7 @@
 @keyframes stickyCtaGlow{0%,100%{opacity:.62;transform:scale(.985);box-shadow:0 0 7px rgba(255,218,89,.65),0 0 15px rgba(255,77,44,.28)}50%{opacity:1;transform:scale(1.025);box-shadow:0 0 12px rgba(255,236,139,.95),0 0 26px rgba(255,77,44,.48)}}
 @media(max-width:599px){.sticky-cta{gap:8px;padding-left:12px;padding-right:12px}.sticky-cta span{max-width:45%;font-size:12px}.sticky-cta button{min-width:148px;padding:12px 17px;font-size:14px}}
 @media(prefers-reduced-motion:reduce){.sticky-cta button::before{animation:none;opacity:.8}.sticky-cta button{transition:none}}
+
+/* Mobile typography and site footer refinements. */
+.site-copyright{display:block;width:100%;margin:5px 0 0;text-align:center;color:#71808b;font-size:11px;line-height:1.4}.site-copyright strong{color:#3b5963;font-weight:850}
+@media(max-width:599px){.category-heading h3{font-size:17px!important}.category-heading p{font-size:11px!important}}
