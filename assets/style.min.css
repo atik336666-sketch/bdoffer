@@ -64,3 +64,5 @@
 .network-tower-icon{display:block;width:30px;height:30px;color:#fff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.22))}
 
 .mobile-phone-icon{display:block;width:30px;height:30px;color:#fff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.22))}
+
+.footer-links{display:flex;align-items:center;gap:8px;min-width:0}.site-copyright{width:auto!important;margin:0!important;text-align:right;white-space:nowrap}.footer-links a,.site-copyright{font-size:12px}footer{align-items:center;justify-content:space-between;gap:12px;white-space:nowrap}@media(max-width:599px){footer{gap:8px;font-size:10px}.footer-links{gap:5px}.footer-links a,.site-copyright{font-size:9px}.site-copyright{letter-spacing:-.02em}}
