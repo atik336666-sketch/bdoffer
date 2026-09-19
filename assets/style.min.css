@@ -53,3 +53,7 @@
 
 /* Conversion-focused sticky CTA hierarchy. */
 .sticky-cta__copy{display:flex;flex-direction:column;gap:2px;min-width:0}.sticky-cta__copy strong{color:#163f4c;font-size:13px;font-weight:950;line-height:1.1;text-shadow:0 1px 0 #fff}.sticky-cta__copy small{color:#527078;font-size:10px;font-weight:750;line-height:1.1}.sticky-cta button{display:inline-flex;align-items:center;justify-content:center;gap:6px}.sticky-cta button span{font-size:16px;line-height:1}.sticky-cta button:focus-visible{outline:3px solid #ffd66b;outline-offset:3px}@media(max-width:599px){.sticky-cta__copy{max-width:48%;gap:3px}.sticky-cta__copy strong{font-size:12px}.sticky-cta__copy small{font-size:9px}.sticky-cta button{min-width:142px;padding:11px 14px;font-size:14px}.sticky-cta button span{font-size:16px}}
+
+/* Keep the hero container exactly aligned with the natural banner aspect ratio. */
+.generated-hero{height:auto!important;min-height:0!important;aspect-ratio:auto!important;overflow:hidden!important;display:block!important}
+.generated-hero-image{display:block!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important}
