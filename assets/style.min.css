@@ -60,3 +60,5 @@
 
 /* The countdown script controls these hands so the visual watch matches the timer. */
 .watch-hand--hour,.watch-hand--minute{animation:none!important}
+
+.network-tower-icon{display:block;width:30px;height:30px;color:#fff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.22))}
