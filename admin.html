@@ -58,7 +58,7 @@
   const $ = id => document.getElementById(id);
   const loginView = $('login-view'), managerView = $('manager-view');
   const status = (node, text, error = false) => { node.textContent = text || ''; node.classList.toggle('error', error); };
-  const request = async (url, options = {}) => { const response = await fetch(API_BASE + url, { credentials:'include', headers:{'Content-Type':'application/json', ...(options.headers||{})}, ...options }); const body = await response.json().catch(() => ({})); if (!response.ok) throw new Error(body.error || 'Request failed'); return body; };
+  const request = async (url, options = {}) => { const token = sessionStorage.getItem('bdoffer_admin_token') || ''; const headers = {'Content-Type':'application/json', ...(options.headers||{})}; if (token) headers.Authorization = 'Bearer ' + token; const response = await fetch(API_BASE + url, { credentials:'include', headers, ...options }); const body = await response.json().catch(() => ({})); if (!response.ok) throw new Error(body.error || 'Request failed'); return body; };
   const escapeText = value => String(value ?? '');
   function row(link) {
     const wrapper = document.createElement('div'); wrapper.className = 'link-row'; wrapper.dataset.key = link.linkKey;
@@ -73,7 +73,7 @@
   async function load() { const data = await request('/api/admin/links'); const list = $('links-list'); list.replaceChildren(...data.links.map(row)); $('count').textContent = data.links.length + ' links'; }
   async function showManager() { loginView.classList.add('hidden'); managerView.classList.remove('hidden'); try { await load(); } catch (error) { status($('manager-status'), error.message, true); } }
   $('login-form').onsubmit = async event => { event.preventDefault(); status($('login-status'), 'Checking credentials…'); try { await request('/api/admin/login', {method:'POST', body:JSON.stringify({username:$('username').value,password:$('password').value})}); $('password').value=''; await showManager(); } catch (error) { status($('login-status'), error.message, true); } };
-  $('logout').onclick = async () => { await request('/api/admin/logout', {method:'POST'}); managerView.classList.add('hidden'); loginView.classList.remove('hidden'); status($('login-status'), 'Logged out'); };
+  $('logout').onclick = async () => { await request('/api/admin/logout', {method:'POST'}); sessionStorage.removeItem('bdoffer_admin_token'); managerView.classList.add('hidden'); loginView.classList.remove('hidden'); status($('login-status'), 'Logged out'); };
   $('add-form').onsubmit = async event => { event.preventDefault(); status($('manager-status'), 'Saving…'); const payload = {linkKey:$('new-key').value.trim(),label:$('new-label').value.trim(),url:$('new-url').value.trim(),isActive:$('new-active').checked,sortOrder:Number($('new-order').value)}; try { await request('/api/admin/links/' + encodeURIComponent(payload.linkKey), {method:'PUT',body:JSON.stringify(payload)}); event.target.reset(); $('new-active').checked=true; $('new-order').value='90'; status($('manager-status'), 'Saved: ' + payload.linkKey); await load(); } catch (error) { status($('manager-status'), error.message, true); } };
   request('/api/admin/session').then(data => data.authenticated ? showManager() : null).catch(() => null);
 })();
