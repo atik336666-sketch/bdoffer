@@ -72,3 +72,9 @@
 .scarcity-copy{flex:1;min-width:0;padding-right:4px}.scarcity-copy span{font-size:clamp(13px,2.2vw,16px);line-height:1.25}
 .countdown-watch{flex:0 0 78px;width:78px;height:78px}.countdown-value{flex:0 0 auto;min-width:48px;color:#fff2b0;font-family:Inter,system-ui,sans-serif;font-size:clamp(13px,2vw,16px);font-weight:950;letter-spacing:.02em;text-shadow:0 1px 2px #000;text-align:center}
 @media(max-width:599px){.scarcity{width:100%;gap:8px;padding:10px 11px}.scarcity-copy{padding-right:2px}.scarcity-copy span{font-size:clamp(11px,3.1vw,14px)}.countdown-watch{flex-basis:62px;width:62px;height:62px}.countdown-value{min-width:40px;font-size:11px}}
+
+/* Make the analog hands clearly visible while they rotate. */
+.watch-hand--hour{width:4px!important;height:25px!important;background:linear-gradient(#fff7c4,#f2b33f)!important;box-shadow:0 0 5px rgba(255,220,104,.95)!important}
+.watch-hand--minute{width:2px!important;height:34px!important;background:#fffbe0!important;box-shadow:0 0 4px rgba(255,246,180,.95)!important}
+.watch-pin{width:8px!important;height:8px!important;border-width:2px!important}
+@media(max-width:599px){.watch-hand--hour{height:20px!important}.watch-hand--minute{height:28px!important}}
