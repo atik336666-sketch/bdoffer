@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const fallbackLinks = {banglalink:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp',grameenphone:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp',airtel:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp',robi:'https://kirevoxis.com/cl/7b50e72145bf854a'};
+  const fallbackLinks = {banglalink:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp',grameenphone:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp',airtel:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp',robi:'https://kirevoxis.com/cl/7b50e72145bf854a',hero_cta:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp',sticky_cta:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp',internet_cta:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp',minute_cta:'https://krt.myofferbd.store/?utm_medium=061510b13b4b59f64b2feb9303a484b0d5f60830&utm_campaign=tarogp'};
   let links = {...fallbackLinks};
   const bn = n => String(n).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
   const pixelId = window.BDOFFER_PIXEL_ID || '';
@@ -8,11 +8,11 @@
   initPixel(pixelId);
   function trackedParams(){const result=new URLSearchParams();new URLSearchParams(location.search).forEach((value,key)=>{if(key==='fbclid'||/^utm_/i.test(key))result.set(key,value)});return result;}
   function offerUrl(base){try{const url=new URL(base,location.href),incoming=trackedParams();incoming.forEach((value,key)=>{if(!url.searchParams.has(key))url.searchParams.set(key,value)});return url.toString()}catch(_){return base}}
-  function go(button){if(button.getAttribute('aria-busy')==='true')return;const category=button.dataset.category,operator=button.dataset.operator,key=button.dataset.linkKey,target=offerUrl(links[key]||fallbackLinks[key]);button.setAttribute('aria-busy','true');if(window.fbq)window.fbq('track','Lead',{content_name:`${operator} ${category}`,content_category:category,operator});window.setTimeout(()=>window.location.assign(target),220)}
-  document.querySelectorAll('.brand-orb').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();go(button)}));
-  document.getElementById('sticky-button').addEventListener('click',()=>document.querySelector('.category-panel .brand-orb')?.focus());
+  function go(button){if(button.getAttribute('aria-busy')==='true')return;const category=button.dataset.category||button.dataset.linkKey,operator=button.dataset.operator||'CTA',key=button.dataset.linkKey,target=offerUrl(links[key]||fallbackLinks[key]);if(!target)return;button.setAttribute('aria-busy','true');if(window.fbq)window.fbq('track','Lead',{content_name:`${operator} ${category}`,content_category:category,operator});window.setTimeout(()=>window.location.assign(target),180)}
+  document.querySelectorAll('.brand-orb,.hero-cta,.category-cta').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();go(button)}));
+  document.getElementById('sticky-button')?.addEventListener('click',event=>{event.preventDefault();go(event.currentTarget)});
   const sticky=document.getElementById('sticky-cta');new IntersectionObserver(entries=>{sticky.classList.toggle('visible',!entries[0].isIntersecting);sticky.setAttribute('aria-hidden',entries[0].isIntersecting?'true':'false')}).observe(document.getElementById('offer-title'));
-  fetch('/api/links.php',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(data=>{if(data?.links)links={...links,...data.links};if(data?.pixel_id)initPixel(data.pixel_id)}).catch(()=>{});
+  fetch('/api/public-links',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(data=>{if(data?.links)links={...links,...data.links};if(data?.pixel_id)initPixel(data.pixel_id)}).catch(()=>{});
   let viewers=1284;setInterval(()=>{viewers+=Math.random()>.52?1:-1;document.getElementById('viewer-count').textContent=bn(viewers.toLocaleString('en-US'))},5500);
   let seconds=300;const timer=document.getElementById('countdown');setInterval(()=>{seconds=seconds>0?seconds-1:300;timer.textContent=bn(String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0'))},1000);
 })();
