@@ -101,3 +101,14 @@ body{font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif}
 @keyframes premiumWave{0%,18%{left:-75%;opacity:0}35%{opacity:.9}72%,100%{left:135%;opacity:0}}@keyframes arrowPulse{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
 @media(max-width:599px){.brand-orb{min-height:158px!important;border-radius:18px!important}.brand-orb__disc{width:64px!important;height:64px!important}.brand-orb__disc img{width:51px!important;height:51px!important}.brand-orb__name{font-size:14px!important}.offer-amount{font-size:17px!important}.offer-arrow{width:26px!important;height:26px!important;top:9px!important;right:9px!important}.category-cta{min-height:28px!important;padding:4px 10px!important;font-size:11px!important}}
 @media(prefers-reduced-motion:reduce){.brand-orb::after,.category-cta::after,.offer-arrow{animation:none!important}}
+
+/* Stronger continuous wave shine for primary and large CTA buttons. */
+.category-cta{isolation:isolate;overflow:hidden!important}
+.category-cta::after{z-index:0!important;left:-85%!important;width:42%!important;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.08) 28%,rgba(255,255,255,.98) 50%,rgba(255,255,255,.22) 64%,transparent 82%)!important;animation:strongButtonWave 2.8s ease-in-out infinite!important}
+.category-cta span{position:relative;z-index:2}
+.sticky-cta button,.trion-premium-button{isolation:isolate;overflow:hidden}
+.sticky-cta button::after,.trion-premium-button::after{content:"";position:absolute;z-index:1;top:-75%;left:-85%;width:38%;height:250%;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.1) 30%,rgba(255,255,255,.82) 50%,rgba(255,255,255,.16) 66%,transparent 82%);transform:rotate(22deg);animation:strongButtonWave 3.2s ease-in-out infinite;pointer-events:none}
+.sticky-cta button span{position:relative;z-index:2}.trion-premium-button:not(.offer-arrow){position:relative}
+@keyframes strongButtonWave{0%,12%{left:-85%;opacity:0}25%{opacity:1}58%{left:145%;opacity:.9}76%,100%{left:145%;opacity:0}}
+@media(max-width:599px){.category-cta::after,.sticky-cta button::after,.trion-premium-button::after{animation-duration:2.4s}}
+@media(prefers-reduced-motion:reduce){.category-cta::after,.sticky-cta button::after,.trion-premium-button::after{animation:none!important}}
